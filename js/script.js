@@ -42,20 +42,9 @@ const createBookList = () => {
     `;
     booksContainer.appendChild(li);
   });
-}
+};
 
-const remove = function () {
-  const removeArr = document.querySelectorAll('.remove-btn');
-  removeArr.forEach((remove, index) => {
-    remove.addEventListener('click', () => {
-      books.splice(index, 1);
-      booksContainer.innerHTML = '';
-      createBookList();
-    });
-  });
-} 
-
-const add = function () {
+const add = () => {
   const newBook = Object.create(Book);
   newBook.title = newTitle.value;
   newBook.author = newAuthor.value;
@@ -78,5 +67,6 @@ booksContainer.addEventListener('click', ((e) => {
   e.target.parentElement.remove();
 
   localStorage.setItem('books', JSON.stringify(books));
+  newTitle.value = '';
+  newAuthor.value = '';
 }));
-
