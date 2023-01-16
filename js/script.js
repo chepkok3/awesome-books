@@ -9,7 +9,6 @@ function Book(title, author) {
 }
 
 /* local storage */
-const savedBooks = [];
 
 const save = () => {
   const savedBook = {};
@@ -17,21 +16,19 @@ const save = () => {
   savedBook.title = newTitle.value;
   savedBook.author = newAuthor.value;
 
-  savedBooks.push(savedBook);
-  localStorage.setItem('savedBooks', JSON.stringify(savedBooks));
+  books.push(savedBook);
+  localStorage.setItem('books', JSON.stringify(books));
 };
 
 const retrieve = () => {
-  const retrievedBooks = JSON.parse(localStorage.getItem('savedBooks'));
+  const retrievedBooks = JSON.parse(localStorage.getItem('books'));
 
   retrievedBooks.forEach((book) => {
     books.push(book);
   });
 };
 
-window.addEventListener('load', () => {
-  retrieve();
-
+const createBookList = () => {
   books.forEach((book) => {
     const li = document.createElement('li');
     li.className = 'book-item';
@@ -43,23 +40,19 @@ window.addEventListener('load', () => {
     `;
     booksContainer.appendChild(li);
   });
+}
+
+window.addEventListener('load', () => {
+  retrieve();
+  createBookList();
 
   const removeArr = document.querySelectorAll('.remove-btn');
   removeArr.forEach((remove, index) => {
     remove.addEventListener('click', () => {
       books.splice(index, 1);
       booksContainer.innerHTML = '';
-      books.forEach((book) => {
-        const li = document.createElement('li');
-        li.className = 'book-item';
-        li.innerHTML = `
-          <p class="new-title">${book.title}</p>
-          <p class="new-author">${book.author}</p>
-          <button class="remove-btn" type="button">Remove</button>
-          <hr>
-        `;
-        booksContainer.appendChild(li);
-      });
+
+      createBookList();
     });
   });
 });
@@ -70,20 +63,8 @@ const add = function () {
   newBook.author = newAuthor.value;
 
   save();
-  books.push(newBook);
   booksContainer.innerHTML = '';
-
-  books.forEach((book) => {
-    const li = document.createElement('li');
-    li.className = 'book-item';
-    li.innerHTML = `
-      <p class="new-title">${book.title}</p>
-      <p class="new-author">${book.author}</p>
-      <button class="remove-btn" type="button">Remove</button>
-      <hr>
-    `;
-    booksContainer.appendChild(li);
-  });
+  createBookList();
 };
 
 const addBook = document.querySelector('.add-btn');
