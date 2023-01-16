@@ -30,6 +30,11 @@ const retrieve = () => {
   });
 };
 
+const initInput = () => {
+  newTitle.value = '';
+  newAuthor.value = '';
+};
+
 const createBookList = () => {
   books.forEach((book, index) => {
     const li = document.createElement('li');
@@ -52,10 +57,17 @@ const add = () => {
   save();
   booksContainer.innerHTML = '';
   createBookList();
+  initInput();
 };
 
 const addBook = document.querySelector('.add-btn');
-addBook.addEventListener('click', add);
+addBook.addEventListener('click', (e) => {
+  if(newTitle.value==='' || newAuthor.value==='') {
+    e.preventDefault();
+  } else {
+    add();
+  }
+});
 
 window.addEventListener('load', () => {
   retrieve();
@@ -67,6 +79,5 @@ booksContainer.addEventListener('click', ((e) => {
   e.target.parentElement.remove();
 
   localStorage.setItem('books', JSON.stringify(books));
-  newTitle.value = '';
-  newAuthor.value = '';
+  initInput();
 }));
