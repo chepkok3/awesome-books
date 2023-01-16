@@ -27,7 +27,7 @@ const retrieve = () => {
   retrievedBooks.forEach((book) => {
     books.push(book);
   });
-}
+};
 
 window.addEventListener('load', () => {
   retrieve();
@@ -38,10 +38,29 @@ window.addEventListener('load', () => {
     li.innerHTML = `
       <p class="new-title">${book.title}</p>
       <p class="new-author">${book.author}</p>
-      <button type="button">Remove</button>
+      <button class="remove-btn" type="button">Remove</button>
       <hr>
     `;
     booksContainer.appendChild(li);
+  });
+
+  const removeArr = document.querySelectorAll('.remove-btn');
+  removeArr.forEach((remove, index) => {
+    remove.addEventListener('click', () => {
+      books.splice(index, 1);
+      booksContainer.innerHTML = '';
+      books.forEach((book) => {
+        const li = document.createElement('li');
+        li.className = 'book-item';
+        li.innerHTML = `
+          <p class="new-title">${book.title}</p>
+          <p class="new-author">${book.author}</p>
+          <button class="remove-btn" type="button">Remove</button>
+          <hr>
+        `;
+        booksContainer.appendChild(li);
+      });
+    });
   });
 });
 
@@ -60,12 +79,12 @@ const add = function () {
     li.innerHTML = `
       <p class="new-title">${book.title}</p>
       <p class="new-author">${book.author}</p>
-      <button type="button">Remove</button>
+      <button class="remove-btn" type="button">Remove</button>
       <hr>
     `;
     booksContainer.appendChild(li);
   });
-}
+};
 
 const addBook = document.querySelector('.add-btn');
 addBook.addEventListener('click', add);
