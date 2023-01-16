@@ -10,12 +10,15 @@
     <header class="header"></header>
     <main>
       <h1 class="title">Awesome book</h1>
-      <ul class="books-container"></ul>
+      <ul class="books-container">
+        
+      </ul>
       <form class="book-form" action="#">
-        <input id="new-title" type="text" placeholder="title" value="title" />
-        <input type="text" id="new-author" type="text" placeholder="author" />
-        <button type="button">Add</button>
+        <input id="new-title" type="text" placeholder="title" required/>
+        <input type="text" id="new-author" type="text" placeholder="author" required/>
+        <button type="submit" class="add-btn">Add</button>
       </form>
     </main>
+    <script src="js/script.js"></script>
   </body>
 </html>
