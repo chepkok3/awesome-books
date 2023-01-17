@@ -1,4 +1,3 @@
-const books = [];
 const booksContainer = document.querySelector('.books-container');
 const newTitle = document.getElementById('new-title');
 const newAuthor = document.getElementById('new-author');
@@ -10,17 +9,44 @@ class Book {
   }
 }
 
+class Books {
+  constructor() {
+    this.books = [];
+  }
+  add() {
+    const newBook = new Book(newTitle.value, newAuthor.value);
+
+    save();
+    booksContainer.innerHTML = '';
+    createBookList();
+    initInput();
+  }
+  save() {
+    // const savedBook = {};
+
+    // savedBook.title = newTitle.value;
+    // savedBook.author = newAuthor.value;
+
+    this.books.push(newBook);
+    localStorage.setItem('books', JSON.stringify(this.books));
+  }
+
+  createBookList() {
+    this.books.forEach((book, index) => {
+      const li = document.createElement('li');
+      li.className = 'book-item';
+      li.innerHTML = `
+        <p class="new-title">${book.title}</p>
+        <p class="new-author">${book.author}</p>
+        <button class="remove-btn" id="${index}" type="button">Remove</button>
+        <hr>
+      `;
+      booksContainer.appendChild(li);
+    });
+  }
+}
+
 /* save to local storage */
-
-const save = () => {
-  const savedBook = {};
-
-  savedBook.title = newTitle.value;
-  savedBook.author = newAuthor.value;
-
-  books.push(savedBook);
-  localStorage.setItem('books', JSON.stringify(books));
-};
 
 // retrieve from local storage
 
@@ -38,31 +64,6 @@ const initInput = () => {
 };
 
 // create the book list
-
-const createBookList = () => {
-  books.forEach((book, index) => {
-    const li = document.createElement('li');
-    li.className = 'book-item';
-    li.innerHTML = `
-      <p class="new-title">${book.title}</p>
-      <p class="new-author">${book.author}</p>
-      <button class="remove-btn" id="${index}" type="button">Remove</button>
-      <hr>
-    `;
-    booksContainer.appendChild(li);
-  });
-};
-
-const add = () => {
-  const newBook = Object.create(Book);
-  newBook.title = newTitle.value;
-  newBook.author = newAuthor.value;
-
-  save();
-  booksContainer.innerHTML = '';
-  createBookList();
-  initInput();
-};
 
 const addBook = document.querySelector('.add-btn');
 addBook.addEventListener('click', (e) => {
