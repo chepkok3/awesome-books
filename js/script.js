@@ -10,7 +10,7 @@ class Book {
   }
 }
 
-/* local storage */
+/* save to local storage */
 
 const save = () => {
   const savedBook = {};
@@ -21,6 +21,8 @@ const save = () => {
   books.push(savedBook);
   localStorage.setItem('books', JSON.stringify(books));
 };
+
+// retrieve from local storage
 
 const retrieve = () => {
   const retrievedBooks = JSON.parse(localStorage.getItem('books'));
@@ -34,6 +36,8 @@ const initInput = () => {
   newTitle.value = '';
   newAuthor.value = '';
 };
+
+// create the book list
 
 const createBookList = () => {
   books.forEach((book, index) => {
@@ -62,7 +66,7 @@ const add = () => {
 
 const addBook = document.querySelector('.add-btn');
 addBook.addEventListener('click', (e) => {
-  if(newTitle.value==='' || newAuthor.value==='') {
+  if (newTitle.value === '' || newAuthor.value === '') {
     e.preventDefault();
   } else {
     add();
@@ -74,10 +78,10 @@ window.addEventListener('load', () => {
   createBookList();
 });
 
-booksContainer.addEventListener('click', ((e) => {
+booksContainer.addEventListener('click', (e) => {
   books.splice(e.target.id, 1);
   e.target.parentElement.remove();
 
   localStorage.setItem('books', JSON.stringify(books));
   initInput();
-}));
+});
