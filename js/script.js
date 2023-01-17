@@ -1,4 +1,4 @@
-/* eslint-disable rule-you-want-to-disable */
+/* eslint-disable max-classes-per-file */
 const booksContainer = document.querySelector('.books-container');
 const newTitle = document.getElementById('new-title');
 const newAuthor = document.getElementById('new-author');
@@ -23,7 +23,7 @@ class Books {
     });
   };
 
-   createBookList() {
+  createBookList() {
     this.books.forEach((book, index) => {
       const li = document.createElement('li');
       li.className = 'book-item';
