@@ -66,6 +66,15 @@ class Books {
     });
     this.initInput();
   }
+
+  remove(target) {
+    if(target.className === 'remove-btn') {
+      this.books.splice(target.id, 1);
+      target.parentElement.remove();
+      localStorage.setItem('books', JSON.stringify(this.books));
+      this.initInput();
+    }
+  }
 }
 
 const bookList = new Books();
@@ -85,9 +94,5 @@ window.addEventListener('load', () => {
 });
 
 booksContainer.addEventListener('click', (e) => {
-  bookList.books.splice(e.target.id, 1);
-  e.target.parentElement.remove();
-
-  localStorage.setItem('books', JSON.stringify(bookList.books));
-  bookList.initInput();
+  bookList.remove(e.target);
 });
