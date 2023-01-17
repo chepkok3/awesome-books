@@ -1,3 +1,4 @@
+/* eslint-disable rule-you-want-to-disable */
 const booksContainer = document.querySelector('.books-container');
 const newTitle = document.getElementById('new-title');
 const newAuthor = document.getElementById('new-author');
@@ -22,7 +23,7 @@ class Books {
     });
   };
 
- /*  createBookList() {
+   createBookList() {
     this.books.forEach((book, index) => {
       const li = document.createElement('li');
       li.className = 'book-item';
@@ -34,7 +35,7 @@ class Books {
       `;
       booksContainer.appendChild(li);
     });
-  } */
+  }
 
   initInput = () => {
     newTitle.value = '';
@@ -42,14 +43,14 @@ class Books {
   };
 
   add() {
-    let newBook = new Book(newTitle.value, newAuthor.value);
+    const newBook = new Book(newTitle.value, newAuthor.value);
     this.books.push(newBook);
 
     localStorage.setItem('books', JSON.stringify(this.books));
 
     booksContainer.innerHTML = '';
     this.books.forEach((book, index) => {
-    const li = document.createElement('li');
+      const li = document.createElement('li');
       li.className = 'book-item';
       li.innerHTML = `
         <p class="new-title">${book.title}</p>
@@ -61,10 +62,9 @@ class Books {
     });
     this.initInput();
   }
-
 }
 
-let bookList = new Books();
+const bookList = new Books();
 
 const addBook = document.querySelector('.add-btn');
 addBook.addEventListener('click', (e) => {
@@ -76,12 +76,11 @@ addBook.addEventListener('click', (e) => {
 });
 
 window.addEventListener('load', () => {
-/*   bookList.retrieve(); */
-/*   bookList.createBookList(); */
+  bookList.retrieve();
+  bookList.createBookList();
 });
 
 booksContainer.addEventListener('click', (e) => {
-  console.log(e.target);
   bookList.books.splice(e.target.id, 1);
   e.target.parentElement.remove();
 
