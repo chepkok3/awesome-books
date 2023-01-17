@@ -28,10 +28,12 @@ class Books {
       const li = document.createElement('li');
       li.className = 'book-item';
       li.innerHTML = `
-        <p class="new-title">${book.title}</p>
+      <div class="author-title">
+        <q class="new-title">${book.title}</q>
+        <span>by</span>
         <p class="new-author">${book.author}</p>
+      </div>
         <button class="remove-btn" id="${index}" type="button">Remove</button>
-        <hr>
       `;
       booksContainer.appendChild(li);
     });
@@ -52,11 +54,13 @@ class Books {
     this.books.forEach((book, index) => {
       const li = document.createElement('li');
       li.className = 'book-item';
-      li.innerHTML = `
-        <p class="new-title">${book.title}</p>
+      li.innerHTML = ` 
+      <div class="author-title">
+        <q class="new-title">${book.title}</q>
+        <span>by</span>
         <p class="new-author">${book.author}</p>
+      </div>
         <button class="remove-btn" id="${index}" type="button">Remove</button>
-        <hr>
       `;
       booksContainer.appendChild(li);
     });

@@ -2,3 +2,73 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+.title {
+  text-align: center;
+  font-size: 32px;
+}
+
+.book-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  width: 34%;
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+.books-container {
+  width: 60%;
+  margin: 15px auto;
+  border: 1px solid black;
+}
+
+#new-title {
+  align-self: center;
+  width: 100%;
+  padding: 6px 0;
+  padding-left: 6px;
+  margin-right: 6px;
+}
+
+#new-author {
+  align-self: center;
+  width: 100%;
+  padding: 6px 0;
+  padding-left: 6px;
+  margin-right: 6px;
+}
+
+.add-btn {
+  align-self: end;
+  text-align: center;
+  padding: 3px 8px;
+}
+
+.book-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+.book-item:nth-child(odd) {
+  background: gray;
+  color: white;
+}
+
+.author-title {
+  display: flex;
+  gap: 8px;
+}
+
+hr {
+  width: 10%;
+  margin: 0 auto;
+  margin-bottom: 32px;
+}
