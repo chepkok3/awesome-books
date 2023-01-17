@@ -62,7 +62,7 @@ const add = () => {
 
 const addBook = document.querySelector('.add-btn');
 addBook.addEventListener('click', (e) => {
-  if(newTitle.value==='' || newAuthor.value==='') {
+  if (newTitle.value === '' || newAuthor.value === '') {
     e.preventDefault();
   } else {
     add();
