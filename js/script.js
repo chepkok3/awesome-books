@@ -68,7 +68,7 @@ class Books {
   }
 
   remove(target) {
-    if(target.className === 'remove-btn') {
+    if (target.className === 'remove-btn') {
       this.books.splice(target.id, 1);
       target.parentElement.remove();
       localStorage.setItem('books', JSON.stringify(this.books));
