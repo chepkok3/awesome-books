@@ -1,4 +1,4 @@
-const books = [];
+/* eslint-disable max-classes-per-file */
 const booksContainer = document.querySelector('.books-container');
 const newTitle = document.getElementById('new-title');
 const newAuthor = document.getElementById('new-author');
@@ -10,78 +10,89 @@ class Book {
   }
 }
 
-/* save to local storage */
+class Books {
+  constructor() {
+    this.books = [];
+  }
 
-const save = () => {
-  const savedBook = {};
+  // retrieve from local storage
+  retrieve = () => {
+    const retrievedBooks = JSON.parse(localStorage.getItem('books'));
+    retrievedBooks.forEach((book) => {
+      this.books.push(book);
+    });
+  };
 
-  savedBook.title = newTitle.value;
-  savedBook.author = newAuthor.value;
+  createBookList() {
+    this.books.forEach((book, index) => {
+      const li = document.createElement('li');
+      li.className = 'book-item';
+      li.innerHTML = `
+      <div class="author-title">
+        <q class="new-title">${book.title}</q>
+        <span>by</span>
+        <p class="new-author">${book.author}</p>
+      </div>
+        <button class="remove-btn" id="${index}" type="button">Remove</button>
+      `;
+      booksContainer.appendChild(li);
+    });
+  }
 
-  books.push(savedBook);
-  localStorage.setItem('books', JSON.stringify(books));
-};
+  initInput = () => {
+    newTitle.value = '';
+    newAuthor.value = '';
+  };
 
-// retrieve from local storage
+  add() {
+    const newBook = new Book(newTitle.value, newAuthor.value);
+    this.books.push(newBook);
 
-const retrieve = () => {
-  const retrievedBooks = JSON.parse(localStorage.getItem('books'));
+    localStorage.setItem('books', JSON.stringify(this.books));
 
-  retrievedBooks.forEach((book) => {
-    books.push(book);
-  });
-};
+    booksContainer.innerHTML = '';
+    this.books.forEach((book, index) => {
+      const li = document.createElement('li');
+      li.className = 'book-item';
+      li.innerHTML = ` 
+      <div class="author-title">
+        <q class="new-title">${book.title}</q>
+        <span>by</span>
+        <p class="new-author">${book.author}</p>
+      </div>
+        <button class="remove-btn" id="${index}" type="button">Remove</button>
+      `;
+      booksContainer.appendChild(li);
+    });
+    this.initInput();
+  }
 
-const initInput = () => {
-  newTitle.value = '';
-  newAuthor.value = '';
-};
+  remove(target) {
+    if (target.className === 'remove-btn') {
+      this.books.splice(target.id, 1);
+      target.parentElement.remove();
+      localStorage.setItem('books', JSON.stringify(this.books));
+      this.initInput();
+    }
+  }
+}
 
-// create the book list
-
-const createBookList = () => {
-  books.forEach((book, index) => {
-    const li = document.createElement('li');
-    li.className = 'book-item';
-    li.innerHTML = `
-      <p class="new-title">${book.title}</p>
-      <p class="new-author">${book.author}</p>
-      <button class="remove-btn" id="${index}" type="button">Remove</button>
-      <hr>
-    `;
-    booksContainer.appendChild(li);
-  });
-};
-
-const add = () => {
-  const newBook = Object.create(Book);
-  newBook.title = newTitle.value;
-  newBook.author = newAuthor.value;
-
-  save();
-  booksContainer.innerHTML = '';
-  createBookList();
-  initInput();
-};
+const bookList = new Books();
 
 const addBook = document.querySelector('.add-btn');
 addBook.addEventListener('click', (e) => {
   if (newTitle.value === '' || newAuthor.value === '') {
     e.preventDefault();
   } else {
-    add();
+    bookList.add();
   }
 });
 
 window.addEventListener('load', () => {
-  retrieve();
-  createBookList();
+  bookList.retrieve();
+  bookList.createBookList();
 });
 
 booksContainer.addEventListener('click', (e) => {
-  books.splice(e.target.id, 1);
-  e.target.parentElement.remove();
-
-  localStorage.setItem('books', JSON.stringify(books));
-  initInput();
+  bookList.remove(e.target);
 });
