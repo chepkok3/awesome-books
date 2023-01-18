@@ -2,6 +2,7 @@
 const booksContainer = document.querySelector('.books-container');
 const newTitle = document.getElementById('new-title');
 const newAuthor = document.getElementById('new-author');
+const dateTime = document.querySelector('.current-day');
 
 class Book {
   constructor(title, author) {
@@ -96,3 +97,32 @@ window.addEventListener('load', () => {
 booksContainer.addEventListener('click', (e) => {
   bookList.remove(e.target);
 });
+
+const date = new Date();
+
+const month = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+][date.getMonth()];
+const str = `${month
+} ${
+  date.getDate()
+} ${
+  date.getFullYear()
+}, ${
+  date.toLocaleString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  })}`;
+dateTime.textContent = str;

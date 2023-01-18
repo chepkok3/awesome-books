@@ -3,9 +3,11 @@
   padding: 0;
 }
 
+html,
 body {
   box-sizing: border-box;
   font-family: 'Raleway', sans-serif;
+  height: 100%;
 }
 
 .title {
@@ -77,4 +79,67 @@ body {
 
 span {
   padding: 0 4px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+  margin: 0 24px;
+  margin-top: 12px;
+  align-items: center;
+}
+
+.logo {
+  padding-left: 0.8rem;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  gap: 12px;
+  align-items: center;
+  height: 100%;
+}
+
+.current-day {
+  align-self: flex-end;
+  margin: 0 24px;
+}
+
+.menu-option {
+  border-left: 3px solid black;
+  height: 100%;
+  padding: 16px;
+}
+
+.menu-option:first-child {
+  border-left: none;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  line-height: 24px;
+}
+
+.contact-info p {
+  margin-top: 24px;
+}
+
+body > footer {
+  position: sticky;
+  top: 100vh;
+  border: 2px solid black;
+  padding: 16px;
+  margin: 12px;
 }
