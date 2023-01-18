@@ -3,9 +3,11 @@
   padding: 0;
 }
 
+html,
 body {
   box-sizing: border-box;
   font-family: 'Raleway', sans-serif;
+  height: 100%;
 }
 
 .title {
@@ -18,15 +20,23 @@ body {
   flex-direction: column;
   justify-content: center;
   gap: 8px;
-  width: 34%;
+  width: 40%;
   margin: 0 auto;
   margin-top: 16px;
 }
 
 .books-container {
-  width: 60%;
+  width: 95%;
   margin: 15px auto;
   border: 1px solid black;
+}
+
+@media screen and (min-width: 768px) {
+  .books-container {
+    width: 60%;
+    margin: 15px auto;
+    border: 1px solid black;
+  }
 }
 
 #new-title {
@@ -54,6 +64,7 @@ body {
 .book-item {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 12px;
 }
 
@@ -64,11 +75,79 @@ body {
 
 .author-title {
   display: flex;
-  gap: 8px;
 }
 
-hr {
-  width: 10%;
-  margin: 0 auto;
-  margin-bottom: 32px;
+span {
+  padding: 0 4px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+  margin: 0 24px;
+  margin-top: 12px;
+  align-items: center;
+}
+
+.logo {
+  padding-left: 0.8rem;
+  width: 100px;
+  height: 50px;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  gap: 12px;
+  align-items: center;
+  height: 100%;
+}
+
+.current-day {
+  align-self: flex-end;
+  margin: 0 24px;
+  margin-bottom: 24px;
+}
+
+.menu-option {
+  border-left: 3px solid black;
+  height: 100%;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.menu-option:first-child {
+  border-left: none;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  line-height: 24px;
+}
+
+.contact-info p {
+  margin-top: 24px;
+}
+
+body > footer {
+  position: sticky;
+  top: 100vh;
+  border: 2px solid black;
+  padding: 16px;
+  margin: 12px;
+}
+
+.hidden {
+  display: none;
 }
