@@ -19,6 +19,9 @@ class Books {
   // retrieve from local storage
   retrieve = () => {
     const retrievedBooks = JSON.parse(localStorage.getItem('books'));
+    if(retrievedBooks === null){
+      return;
+    }
     retrievedBooks.forEach((book) => {
       this.books.push(book);
     });
@@ -92,6 +95,8 @@ addBook.addEventListener('click', (e) => {
 window.addEventListener('load', () => {
   bookList.retrieve();
   bookList.createBookList();
+  addNewBook.classList.add('hidden');
+  contactInfo.classList.add('hidden');
 });
 
 booksContainer.addEventListener('click', (e) => {
@@ -126,3 +131,32 @@ const str = `${month
     second: '2-digit',
   })}`;
 dateTime.textContent = str;
+
+
+const listBooks = document.querySelector('.list-books');
+const addNewBook = document.querySelector('.add-new-book');
+const contactInfo = document.querySelector('.contact-info');
+
+const listBookLinks = document.querySelectorAll('.list-book');
+const newBookLink = document.querySelector('.new-book');
+const contactLink = document.querySelector('.contact');
+
+listBookLinks.forEach((listBookLink) => {
+  listBookLink.addEventListener('click', () => {
+    listBooks.classList.remove('hidden');
+    addNewBook.classList.add('hidden');
+    contactInfo.classList.add('hidden');
+  });
+});
+
+newBookLink.addEventListener('click', () => {
+  addNewBook.classList.remove('hidden');
+  listBooks.classList.add('hidden');
+  contactInfo.classList.add('hidden');
+});
+
+contactLink.addEventListener('click', () => {
+  contactInfo.classList.remove('hidden');
+  addNewBook.classList.add('hidden');
+  listBooks.classList.add('hidden');
+});
