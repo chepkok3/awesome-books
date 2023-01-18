@@ -17,7 +17,6 @@ class Book {
     this.author = author;
   }
 }
-
 class Books {
   constructor() {
     this.books = [];
