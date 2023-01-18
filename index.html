@@ -14,24 +14,50 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="header"></header>
+    <header class="header">
+      <nav>
+        <img src="" alt="logo" class="logo" />
+        <ul class="menu">
+          <li class="menu-option">List</li>
+          <li class="menu-option">Add new</li>
+          <li class="menu-option">Contact</li>
+        </ul>
+      </nav>
+      <time class="current-day"></time>
+    </header>
     <main>
-      <h1 class="title">All awesome books</h1>
-      <ul class="books-container"></ul>
-      <hr />
-      <h2 class="title">Add a new book</h2>
-      <form class="book-form" action="#">
-        <input id="new-title" type="text" placeholder="title" required />
-        <input
-          type="text"
-          id="new-author"
-          type="text"
-          placeholder="author"
-          required
-        />
-        <button type="submit" class="add-btn">Add</button>
-      </form>
+      <section class="list-books">
+        <h1 class="title">All awesome books</h1>
+        <ul class="books-container"></ul>
+      </section>
+      <section class="add-new-book">
+        <h2 class="title">Add a new book</h2>
+        <form class="book-form" action="#">
+          <input id="new-title" type="text" placeholder="title" required />
+          <input
+            type="text"
+            id="new-author"
+            type="text"
+            placeholder="author"
+            required
+          />
+          <button type="submit" class="add-btn">Add</button>
+        </form>
+      </section>
+      <section class="contact-info">
+        <h2 class="title">Contact information</h2>
+        <p>
+          Do have any questions or you just want to say "Hello"?<br />You can
+          reach out to us!
+        </p>
+        <ul>
+          <li>Our email:mail@mail.com</li>
+          <li>Our phone number: 000 000 000</li>
+          <li>Our address: Some address and street number</li>
+        </ul>
+      </section>
     </main>
+    <footer><small>Copyright something</small></footer>
     <script defer src="js/script.js"></script>
   </body>
 </html>
