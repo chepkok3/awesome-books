@@ -4,6 +4,13 @@ const newTitle = document.getElementById('new-title');
 const newAuthor = document.getElementById('new-author');
 const dateTime = document.querySelector('.current-day');
 
+const listBooks = document.querySelector('.list-books');
+const addNewBook = document.querySelector('.add-new-book');
+const contactInfo = document.querySelector('.contact-info');
+
+const listBookLinks = document.querySelectorAll('.list-book');
+const newBookLink = document.querySelector('.new-book');
+const contactLink = document.querySelector('.contact');
 class Book {
   constructor(title, author) {
     this.title = title;
@@ -19,7 +26,7 @@ class Books {
   // retrieve from local storage
   retrieve = () => {
     const retrievedBooks = JSON.parse(localStorage.getItem('books'));
-    if(retrievedBooks === null){
+    if (retrievedBooks === null) {
       return;
     }
     retrievedBooks.forEach((book) => {
@@ -131,15 +138,6 @@ const str = `${month
     second: '2-digit',
   })}`;
 dateTime.textContent = str;
-
-
-const listBooks = document.querySelector('.list-books');
-const addNewBook = document.querySelector('.add-new-book');
-const contactInfo = document.querySelector('.contact-info');
-
-const listBookLinks = document.querySelectorAll('.list-book');
-const newBookLink = document.querySelector('.new-book');
-const contactLink = document.querySelector('.contact');
 
 listBookLinks.forEach((listBookLink) => {
   listBookLink.addEventListener('click', () => {
