@@ -41,7 +41,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://rica213.github.io/awesome-books/)
+- [Live Demo Link](https://chepkok3.github.io/awesome-books/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -127,7 +127,7 @@ We would like to thank the Microverse team, coding partners and programming frie
 
 - **[What is the importance of the project?]**
 
-  - [The project serves the purpose of helping us understand use of JavaScript in creating websites and apps.]
+  - [The project serves the purpose of helping us understand use of JavaScript in creating websites and apps by creating a page that allows users to add and remove books.]
 
 - **[Question_2]**
 
