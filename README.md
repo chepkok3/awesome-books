@@ -33,15 +33,15 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[A form to enter book name and author]**
-- **[A button to add a book and the author]**
-- **[A button to remove a book from the list]**
+- **[A section to render all the existing books]**
+- **[A section to add a new book into the list]**
+- **[A section to contact the authors of the project]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://yourdeployedapplicationlink.com)
+- [Live Demo Link](https://rica213.github.io/awesome-books/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -91,6 +91,7 @@ You can deploy this project using:
 👤 **Author2**
 
 - GitHub: [@rica213](https://github.com/rica213)
+- LinkedIn: [Larissa](https://www.linkedin.com/in/larissa-clarielle-andrainasoa-8768a3256/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
