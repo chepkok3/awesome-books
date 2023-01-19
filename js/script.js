@@ -101,8 +101,6 @@ addBook.addEventListener('click', (e) => {
 window.addEventListener('load', () => {
   bookList.retrieve();
   bookList.createBookList();
-  addNewBook.classList.add('hidden');
-  contactInfo.classList.add('hidden');
 });
 
 booksContainer.addEventListener('click', (e) => {
